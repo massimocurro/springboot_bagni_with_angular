@@ -1,9 +1,15 @@
 package com.example.demo.model;
 
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Umbrella {
@@ -24,6 +30,15 @@ public class Umbrella {
 		setComments("");
 		setDetails("");
 		setBooking_status(0);
+	}
+	
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_umbrella", referencedColumnName = "id")
+    private Set <TimeBooking> timeBooking;
+    
+    
+	public int getId() {
+		return id;
 	}
 
 

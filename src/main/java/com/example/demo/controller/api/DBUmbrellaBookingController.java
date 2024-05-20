@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.data.UmbrellaJsonData;
 
 import com.example.demo.model.Umbrella;
-
+import com.example.demo.model.UmbrellaBooking;
+import com.example.demo.service.IUmbrellaBookingService;
 import com.example.demo.service.IUmbrellaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -31,25 +32,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
-@RequestMapping("api/umbrella")
-public class DBUmbrellaController {
+@RequestMapping("api/umbrella_booking")
+public class DBUmbrellaBookingController {
 
 	@Autowired
-	@Qualifier("UmbrellaService")
-	private IUmbrellaService umbrellaService;
+	@Qualifier("UmbrellaBookingService")
+	private IUmbrellaBookingService service;
 
 	@GetMapping("get/all")
 	@CrossOrigin
-	public Iterable <Umbrella> getAllUmbrella() {
+	public Iterable <UmbrellaBooking> getAllUmbrella() {
 		System.out.println("in get: /api/umbrella/get");
-		return umbrellaService.getAll();
+		return service.getAll();
 	}
 	
 	@GetMapping("get/{id}")
 	@CrossOrigin
-	public Iterable <Umbrella> getUmbrellaById(@PathVariable int id) {
+	public Iterable <UmbrellaBooking> getUmbrellaById(@PathVariable int id) {
 		System.out.println("in get: /api/umbrella/get");
-		return umbrellaService.getById(id);
+		return service.getById(id);
 	}
 	
 
@@ -62,10 +63,10 @@ public class DBUmbrellaController {
 		
 		UmbrellaJsonData umbrellaData = objectMapper.readValue(umbrella, UmbrellaJsonData.class);
 	     
-		Umbrella newUmbrella = new Umbrella();
-		newUmbrella.setComments(umbrellaData.getComments());
+		UmbrellaBooking newUmbrella = new UmbrellaBooking();
+		//newUmbrella.setComments(umbrellaData.getComments());
 		
-		umbrellaService.add(newUmbrella);
+		service.add(newUmbrella);
 
 	}
 	
@@ -77,18 +78,18 @@ public class DBUmbrellaController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		UmbrellaJsonData umbrellaData = objectMapper.readValue(umbrella, UmbrellaJsonData.class);
-	    Iterable <Umbrella> umbrellaList  = umbrellaService.getById(umbrellaData.getId());
+	    Iterable <UmbrellaBooking> umbrellaList  = service.getById(umbrellaData.getId());
 	    
 	    System.out.println("id for update: " +umbrellaData.getId());
 	    
-	    for (Umbrella each : umbrellaList)
+	    for (UmbrellaBooking each : umbrellaList)
 		{
-	    	System.out.println("in foreach details: " + each.getDetails());
-		    each.setComments(umbrellaData.getComments());
-		    each.setBooking_status(umbrellaData.getBookingStatus());
-		    each.setDetails(umbrellaData.getDetails());
-		    //each.setId_umbrella(umbrellaData.getIdUmbrella());
-		    umbrellaService.update(each);
+	    	//System.out.println("in foreach details: " + each.getDetails());
+//		    each.setComments(umbrellaData.getComments());
+//		    each.setBooking_status(umbrellaData.getBookingStatus());
+//		    each.setDetails(umbrellaData.getDetails());
+		    each.setId_umbrella(umbrellaData.getIdUmbrella());
+		    service.update(each);
 		}
 	}
 	

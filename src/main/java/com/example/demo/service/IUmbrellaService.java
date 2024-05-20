@@ -8,10 +8,12 @@ import com.example.demo.model.Umbrella;
 
 public interface IUmbrellaService {
 	
-	Iterable <Umbrella> getAllUmbrella();
+	Iterable <Umbrella> getAll();
 	
 	
-	void addUmbrella(Umbrella umbrella);
+	void add(Umbrella umbrella);
 	
-	Iterable<Umbrella> getUmbrellaById(int id);
+	Iterable<Umbrella> getById(int id);
+	
+	void update(Umbrella umbrella);
 }

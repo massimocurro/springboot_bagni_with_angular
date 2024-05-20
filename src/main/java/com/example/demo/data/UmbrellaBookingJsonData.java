@@ -2,7 +2,7 @@ package com.example.demo.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UmbrellaJsonData {
+public class UmbrellaBookingJsonData {
 	
 	@JsonProperty("details")
 	private String details;
@@ -20,7 +20,7 @@ public class UmbrellaJsonData {
 	@JsonProperty("booking_status")
 	private int bookink_status;
 	
-	public UmbrellaJsonData() {
+	public UmbrellaBookingJsonData() {
 		
 	}
 	public String getDetails() {

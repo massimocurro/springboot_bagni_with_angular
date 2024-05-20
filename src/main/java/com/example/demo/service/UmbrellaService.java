@@ -15,26 +15,36 @@ import com.example.demo.repository.IUmbrellaRepository;
 public class UmbrellaService implements IUmbrellaService{
 	
 	@Autowired
-	IUmbrellaRepository iUmbrellaRepository;
+	IUmbrellaRepository iRepository;
 	
 
 	@Override
-	public Iterable<Umbrella> getAllUmbrella() {
+	public Iterable<Umbrella> getAll() {
 		// TODO Auto-generated method stub
-		return iUmbrellaRepository.findAll();
+		return iRepository.findAll();
 	}
 
 	@Override
-	public void addUmbrella(Umbrella umbrella) {
+	public void add(Umbrella umbrella) {
 		// TODO Auto-generated method stub
-		iUmbrellaRepository.save(umbrella);
+		iRepository.save(umbrella);
 	}
 
 	@Override
-	public Iterable <Umbrella> getUmbrellaById(int id) {
+	public Iterable <Umbrella> getById(int id) {
 		// TODO Auto-generated method stub
 		
-		return iUmbrellaRepository.findById(id).map(Collections::singleton)
+		return iRepository.findById(id).map(Collections::singleton)
 		            .orElseGet(Collections::emptySet);
 	}
+
+	@Override
+	public void update(Umbrella umbrella) {
+		// TODO Auto-generated method stub
+		//iUmbrellaRepository.findById(umbrella.)
+		
+		iRepository.save(umbrella);
+	}
+	
+
 }
