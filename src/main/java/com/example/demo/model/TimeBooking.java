@@ -16,11 +16,11 @@ public class TimeBooking {
 	
 	private Date date_booking;
 
-	public Date getDate_booking() {
+	public Date getDate() {
 		return date_booking;
 	}
 
-	public void setDate_booking(Date date_booking) {
+	public void setDate(Date date_booking) {
 		this.date_booking = date_booking;
 	}
 

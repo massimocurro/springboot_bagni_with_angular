@@ -11,7 +11,7 @@ public interface ITimeBookingService {
 	
 	void add(TimeBooking timeBooking);
 	
-	Iterable<TimeBooking> geById(int id);
+	Iterable<TimeBooking> getById(int id);
 	
 	void update(TimeBooking timeBooking);
 }

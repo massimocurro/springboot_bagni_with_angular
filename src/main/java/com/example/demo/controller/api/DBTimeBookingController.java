@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.data.BookingTimeJsonData;
 import com.example.demo.data.UmbrellaJsonData;
-
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
+import com.example.demo.service.ITimeBookingService;
 import com.example.demo.service.IUmbrellaBookingService;
 import com.example.demo.service.IUmbrellaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -32,24 +34,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
-@RequestMapping("api/umbrella_booking")
-public class DBUmbrellaBookingController {
+@RequestMapping("api/booking")
+public class DBTimeBookingController {
 
 	@Autowired
-	@Qualifier("UmbrellaBookingService")
-	private IUmbrellaBookingService service;
+	@Qualifier("TimeBookingService")
+	private ITimeBookingService service;
 
 	@GetMapping("get/all")
 	@CrossOrigin
-	public Iterable <UmbrellaBooking> getAllUmbrella() {
-		System.out.println("in get: /api/umbrella/get");
+	public Iterable <TimeBooking> getAll() {
+		System.out.println("in get: /api/booking/get");
 		return service.getAll();
 	}
 	
 	@GetMapping("get/{id}")
 	@CrossOrigin
-	public Iterable <UmbrellaBooking> getUmbrellaById(@PathVariable int id) {
-		System.out.println("in get: /api/umbrella/get");
+	public Iterable <TimeBooking> getById(@PathVariable int id) {
+		System.out.println("in get: /api/booking/get");
 		return service.getById(id);
 	}
 	
@@ -57,38 +59,34 @@ public class DBUmbrellaBookingController {
 	@PostMapping("add")
 	@CrossOrigin
 	@ResponseBody
-	public void add(@RequestBody String umbrella) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/add");
+	public void add(@RequestBody String timeBooking) throws JsonMappingException, JsonProcessingException {
+		System.out.println("in add: /api/booking/add");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
-		UmbrellaJsonData umbrellaData = objectMapper.readValue(umbrella, UmbrellaJsonData.class);
+		BookingTimeJsonData umbrellaData = objectMapper.readValue(timeBooking, BookingTimeJsonData.class);
 	     
-		UmbrellaBooking newUmbrella = new UmbrellaBooking();
-		//newUmbrella.setComments(umbrellaData.getComments());
+		TimeBooking newBooking = new TimeBooking();
+		newBooking.setDate(umbrellaData.getDate());
 		
-		service.add(newUmbrella);
+		service.add(newBooking);
 
 	}
 	
 	@PostMapping("update")
 	@CrossOrigin
 	@ResponseBody
-	public void update(@RequestBody String umbrella) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/update");
+	public void update(@RequestBody String timeBooking) throws JsonMappingException, JsonProcessingException {
+		System.out.println("in add: /api/booking/update");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
-		UmbrellaJsonData umbrellaData = objectMapper.readValue(umbrella, UmbrellaJsonData.class);
-	    Iterable <UmbrellaBooking> umbrellaList  = service.getById(umbrellaData.getId());
+		BookingTimeJsonData umbrellaData = objectMapper.readValue(timeBooking, BookingTimeJsonData.class);
+	    Iterable <TimeBooking> timeBookingList  = service.getById(umbrellaData.getId());
 	    
 	    System.out.println("id for update: " +umbrellaData.getId());
 	    
-	    for (UmbrellaBooking each : umbrellaList)
+	    for (TimeBooking each : timeBookingList)
 		{
-	    	//System.out.println("in foreach details: " + each.getDetails());
-//		    each.setComments(umbrellaData.getComments());
-//		    each.setBooking_status(umbrellaData.getBookingStatus());
-//		    each.setDetails(umbrellaData.getDetails());
-		    each.setId_umbrella(umbrellaData.getIdUmbrella());
+		    each.setDate(umbrellaData.getDate());
 		    service.update(each);
 		}
 	}
@@ -100,7 +98,7 @@ public class DBUmbrellaBookingController {
 	@CrossOrigin
 	@ResponseBody
 	public void delete() throws JsonMappingException, JsonProcessingException {
-		System.out.println("in delete: /api/delete");
+		System.out.println("in delete: /api/booking/delete");
 	
 	}
 }

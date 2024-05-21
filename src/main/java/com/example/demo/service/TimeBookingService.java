@@ -30,7 +30,7 @@ public class TimeBookingService implements ITimeBookingService{
 	}
 
 	@Override
-	public Iterable<TimeBooking> geById(int id) {
+	public Iterable<TimeBooking> getById(int id) {
 		// TODO Auto-generated method stub
 		
 		return iRepository.findById(id).map(Collections::singleton)
