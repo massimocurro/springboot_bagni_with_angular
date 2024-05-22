@@ -4,6 +4,7 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,9 +33,12 @@ public class Umbrella {
 		setBooking_status(0);
 	}
 	
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_umbrella", referencedColumnName = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "umbrella_ref", cascade = CascadeType.ALL)
     private Set <TimeBooking> timeBooking;
+    
+    public Set <TimeBooking> getTimeBooking() {
+    	return timeBooking;
+    }
     
     
 	public int getId() {

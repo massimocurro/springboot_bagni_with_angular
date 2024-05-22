@@ -14,4 +14,6 @@ public interface ITimeBookingService {
 	Iterable<TimeBooking> getById(int id);
 	
 	void update(TimeBooking timeBooking);
+	
+	Iterable<TimeBooking> getById(int id);
 }
