@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -25,7 +26,6 @@ public class Umbrella {
 	
 	private int booking_status;
 	
-	private int id_umbrella;
 	
 	public Umbrella() {
 		setComments("");
@@ -34,11 +34,15 @@ public class Umbrella {
 	}
 	
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "umbrella_ref", cascade = CascadeType.ALL)
-    private Set <TimeBooking> timeBooking;
+    private Set <TimeBooking> time_booking_ref;
     
     public Set <TimeBooking> getTimeBooking() {
-    	return timeBooking;
+    	return time_booking_ref;
     }
+    
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "time_slot_id") //il campo specificato deve esistere nella tabella sul DB nella tabella rappresentata da questa entity
+	private TimeSlot time_slot_ref;
     
     
 	public int getId() {
@@ -75,13 +79,4 @@ public class Umbrella {
 		this.booking_status = booking_status;
 	}
 
-
-	public int getId_umbrella() {
-		return id_umbrella;
-	}
-
-
-	public void setId_umbrella(int id_umbrella) {
-		this.id_umbrella = id_umbrella;
-	}
 }
