@@ -16,4 +16,6 @@ public interface IUmbrellaService {
 	Iterable<Umbrella> getById(int id);
 	
 	void update(Umbrella umbrella);
+	
+	Umbrella getByUmbrellaAndPeriod(int id, String period);
 }
