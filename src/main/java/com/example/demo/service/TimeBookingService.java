@@ -39,6 +39,7 @@ public class TimeBookingService implements ITimeBookingService{
 
 	@Override
 	public void update(TimeBooking timeBooking) {
+		iRepository.save(timeBooking);
 		// TODO Auto-generated method stub
 		
 	}

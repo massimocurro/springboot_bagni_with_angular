@@ -1,5 +1,7 @@
 package com.example.demo.data;
 
+
+
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,12 +24,15 @@ public class BookingTimeJsonData {
 	}
 	
 	public Date getDate() {
-		return this.date;
+		return date;
 	}
 	
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	
+
 	
 	
 }
