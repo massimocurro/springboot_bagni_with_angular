@@ -30,7 +30,7 @@ public class TimeSlotService implements ITimeSlotService{
 	@Override
 	public void update(TimeSlot timeSlot) {
 		// TODO Auto-generated method stub
-		
+		iRepository.save(timeSlot);
 	}
 
 	@Override

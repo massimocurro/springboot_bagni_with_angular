@@ -13,7 +13,7 @@ public interface ICustomerService {
 	
 	Iterable <Customer> getAll();
 	
-	void add(Customer client);
+	void add(Customer customer);
 	
 	Iterable<Customer> getById(int id);
 	
