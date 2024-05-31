@@ -8,8 +8,20 @@ public class CustomerJsonData {
 	private int id;
 
 	
-	@JsonProperty("time_slot")
-	private String time_slot;
+	@JsonProperty("name")
+	private String name;
+	
+	@JsonProperty("surname")
+	private String surname;
+	
+	@JsonProperty("phone")
+	private String phone;
+	
+	@JsonProperty("address")
+	private String address;
+	
+	@JsonProperty("email")
+	private String email;
 	
 	public CustomerJsonData() {}
 		
@@ -22,15 +34,45 @@ public class CustomerJsonData {
 		this.id = id;
 	}
 	
-	public String getTimeSlot() {
-		return this.time_slot;
+	public String getName() {
+		return this.name;
 	}
 	
-	public void setTimeSlot(String timeSlot) {
-		this.time_slot = timeSlot;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
+	public void setSurName(String surname) {
+		this.surname = surname;
+	}
 	
+	public String getSurName() {
+		return this.surname;
+	}
+	
+	public String getPhone() {
+		return this.phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
+	public String getAddress() {
+		return this.address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }
 	

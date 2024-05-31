@@ -74,17 +74,18 @@ public class DBTimeSlotController {
 	@CrossOrigin
 	@ResponseBody
 	public void update(@RequestBody String timeSlot) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/update");
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		TimeSlotJsonData timeSlotData= objectMapper.readValue(timeSlot, TimeSlotJsonData.class);
 	    Iterable <TimeSlot> timeSlots  = service.getById(timeSlotData.getId());
-	    
-	    System.out.println("id for update: " +timeSlotData.getId());
+	    System.out.println("in update: /api/time_slot/update");
+	    System.out.println("TimeSlot id for update: " +timeSlotData.getId());
+	    System.out.println("TimeSlot time_slot for update: " +timeSlotData.getTimeSlot());
 	    
 	    for (TimeSlot each : timeSlots)
 		{
-	    	System.out.println("in foreach details: " + each.getId());
+	    	System.out.println("saving time slot: " + each.getId());
 		    each.setTime_slot(timeSlotData.getTimeSlot());
 		    service.update(each);
 		}

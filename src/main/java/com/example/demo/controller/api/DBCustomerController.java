@@ -76,21 +76,27 @@ public class DBCustomerController {
 	@PostMapping("update")
 	@CrossOrigin
 	@ResponseBody
-	public void update(@RequestBody String timeSlot) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/update");
+	public void update(@RequestBody String customer) throws JsonMappingException, JsonProcessingException {
+		System.out.println("in update: /api/customer/update");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
-		TimeSlotJsonData timeSlotData= objectMapper.readValue(timeSlot, TimeSlotJsonData.class);
-	  //  Iterable <TimeSlot> timeSlots  = service.getById(timeSlotData.getId());
+		CustomerJsonData customerJsonData= objectMapper.readValue(customer, CustomerJsonData.class);
+	    Iterable <Customer> customers  = service.getById(customerJsonData.getId());
 	    
-//	    System.out.println("id for update: " +timeSlotData.getId());
-//	    
-//	    for (TimeSlot each : timeSlots)
-//		{
-//	    	System.out.println("in foreach details: " + each.getId());
-//		    each.setTime_slot(timeSlotData.getTimeSlot());
-//		    //service.update(each);
-//		}
+	    System.out.println("id for update: " +customerJsonData.getId() + " surname: "
+	    		+ customerJsonData.getSurName());
+	    
+	    for (Customer each : customers)
+		{
+	    	System.out.println("in foreach details: " + each.getId());
+		    each.setAddress(customerJsonData.getAddress());
+		    each.setName(customerJsonData.getName());
+		    each.setSurname(customerJsonData.getSurName());
+		    each.setPhone(customerJsonData.getPhone());
+		    each.setEmail(customerJsonData.getEmail());
+		    
+		    service.update(each);
+		}
 	}
 	
 	

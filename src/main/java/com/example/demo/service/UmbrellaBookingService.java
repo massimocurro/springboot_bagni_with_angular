@@ -28,7 +28,7 @@ public class UmbrellaBookingService implements IUmbrellaBookingService{
 
 	@Override
 	public void update(UmbrellaBooking umbrellaBooking) {
-		// TODO Auto-generated method stub
+		iRepository.save(umbrellaBooking);
 		
 	}
 

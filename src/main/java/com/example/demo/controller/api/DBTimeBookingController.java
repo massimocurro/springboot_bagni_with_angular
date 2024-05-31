@@ -76,7 +76,7 @@ public class DBTimeBookingController {
 	@CrossOrigin
 	@ResponseBody
 	public void update(@RequestBody String timeBooking) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/booking/update");
+		System.out.println("in update: /api/booking/update");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		BookingTimeJsonData bookingTimeData = objectMapper.readValue(timeBooking, BookingTimeJsonData.class);

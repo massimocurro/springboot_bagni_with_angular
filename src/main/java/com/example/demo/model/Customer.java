@@ -39,9 +39,12 @@ public class Customer {
 //		return time_slot_ref;
 //	}
 //	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "customer_ref", cascade = CascadeType.ALL)
-	private TimeSlot time_slot_ref;
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_ref", cascade = CascadeType.ALL)
+//	private TimeSlot time_slot_ref;
 	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer_ref", cascade = CascadeType.ALL)
+	private Set <TimeSlot> time_slot_ref;
 //	public TimeSlot getTimeSlotRef() {
 //		return time_slot_ref;
 //	}

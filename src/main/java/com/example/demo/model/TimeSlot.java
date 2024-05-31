@@ -35,9 +35,13 @@ public class TimeSlot {
 //		return customer_ref;
 //	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_customer",referencedColumnName = "id") //il campo specificato deve esistere nella tabella sul DB nella tabella rappresentata da questa entity
 	private Customer customer_ref;
+	
+	
 	
 
 	public Customer getCustomerRef() {

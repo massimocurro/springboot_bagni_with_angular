@@ -33,6 +33,7 @@ public class CustomerService implements ICustomerService{
 	@Override
 	public void update(Customer client) {
 		// TODO Auto-generated method stub
+		this.iRepository.save(client);
 		
 	}
 
