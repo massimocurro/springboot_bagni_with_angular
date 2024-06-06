@@ -22,7 +22,7 @@ public class TimeBooking {
 	
 	private Date date_booking;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "umbrella_id") //il campo specificato deve esistere nella tabella sul DB nella tabella rappresentata da questa entity
 	private Umbrella umbrella_ref;
 	

@@ -46,6 +46,12 @@ public class TimeSlotService implements ITimeSlotService{
 	            .orElseGet(Collections::emptySet);
 	}
 
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		this.iRepository.deleteById(id);
+	}
+
 	
 
 }

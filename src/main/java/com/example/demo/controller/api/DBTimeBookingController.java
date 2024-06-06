@@ -96,7 +96,6 @@ public class DBTimeBookingController {
 	
 	
 
-	
 	@DeleteMapping("delete")
 	@CrossOrigin
 	@ResponseBody

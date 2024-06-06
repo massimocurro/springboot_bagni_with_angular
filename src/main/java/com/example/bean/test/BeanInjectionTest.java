@@ -1,8 +1,12 @@
 package com.example.bean.test;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.function.Function;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,6 +31,23 @@ public class BeanInjectionTest {
 		for (String component : ctx.getBeanDefinitionNames()) {
 			System.out.println("> bean component present in IOC contanier: " + component);
 		}
+		
+		Function <String,String> a = (data) -> 
+		{
+			System.out.println(data); 
+		    return data.concat(" ECCOMI").toString();
+		};
+		
+		List <String> lista = new ArrayList();
+		lista.add("Superman");
+		lista.add("Batman");
+		lista.add("Acquaman");
+		lista.forEach(data -> System.out.println(data));
+
+		System.out.println("belin: " + a.apply("test"));
+		
+		
+		
 		
 		ComponentClass2 customer = ctx.getBean(ComponentClass2.class);
 		customer.setName("Massimo");

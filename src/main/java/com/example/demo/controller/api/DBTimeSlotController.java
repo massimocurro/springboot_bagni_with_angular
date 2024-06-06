@@ -94,11 +94,11 @@ public class DBTimeSlotController {
 	
 
 	
-	@DeleteMapping("delete")
+	@DeleteMapping("delete/{id}")
 	@CrossOrigin
 	@ResponseBody
-	public void delete() throws JsonMappingException, JsonProcessingException {
-		System.out.println("in delete: /api/delete");
-	
+	public void delete(@PathVariable int id) throws JsonMappingException, JsonProcessingException {
+		System.out.println("DBTimeSlotController in delete: /api/time_slot/delete");
+		this.service.delete(id);
 	}
 }

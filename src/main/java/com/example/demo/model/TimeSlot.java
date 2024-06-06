@@ -37,7 +37,7 @@ public class TimeSlot {
 	
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_customer",referencedColumnName = "id") //il campo specificato deve esistere nella tabella sul DB nella tabella rappresentata da questa entity
 	private Customer customer_ref;
 	
@@ -48,7 +48,7 @@ public class TimeSlot {
 		return customer_ref;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "time_slot_ref", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "time_slot_ref")
 	private Set <Umbrella> umbrella_ref;
 	    
 	private int id_umbrella;

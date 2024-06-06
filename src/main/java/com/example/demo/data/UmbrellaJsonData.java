@@ -20,6 +20,8 @@ public class UmbrellaJsonData {
 	@JsonProperty("booking_status")
 	private int bookink_status;
 	
+	private int time_slot_id;
+	
 	public UmbrellaJsonData() {
 		
 	}
@@ -60,6 +62,12 @@ public class UmbrellaJsonData {
 	
 	public void setIdUmbrella(int id_umbrella) {
 		this.id_umbrella = id_umbrella;
+	}
+	public int getTime_slot_id() {
+		return time_slot_id;
+	}
+	public void setTime_slot_id(int time_slot_id) {
+		this.time_slot_id = time_slot_id;
 	}
 }
 	

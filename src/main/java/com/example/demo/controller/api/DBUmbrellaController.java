@@ -87,6 +87,7 @@ public class DBUmbrellaController {
 		    each.setComments(umbrellaData.getComments());
 		    each.setBooking_status(umbrellaData.getBookingStatus());
 		    each.setDetails(umbrellaData.getDetails());
+		    
 		    umbrellaService.update(each);
 		}
 	}

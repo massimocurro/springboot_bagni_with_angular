@@ -27,20 +27,22 @@ public class Umbrella {
 	private int booking_status;
 	
 	
+	
+	
 	public Umbrella() {
 		setComments("");
 		setDetails("");
 		setBooking_status(0);
 	}
 	
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "umbrella_ref", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "umbrella_ref")
     private Set <TimeBooking> time_booking_ref;
     
     public Set <TimeBooking> getTimeBooking() {
     	return time_booking_ref;
     }
     
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "time_slot_id") //il campo specificato deve esistere nella tabella sul DB nella tabella rappresentata da questa entity
 	private TimeSlot time_slot_ref;
     
@@ -78,5 +80,6 @@ public class Umbrella {
 	public void setBooking_status(int booking_status) {
 		this.booking_status = booking_status;
 	}
-
+ 
+	
 }

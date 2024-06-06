@@ -14,5 +14,7 @@ public interface ITimeSlotService {
 	
 	void update(TimeSlot timeSlot);
 	
+	void delete(int id);
+	
 	
 }
