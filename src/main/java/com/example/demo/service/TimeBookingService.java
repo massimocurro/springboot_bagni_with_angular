@@ -12,7 +12,7 @@ import com.example.demo.repository.ITimeBookingRepository;
 
 
 @Service("TimeBookingService")
-public class TimeBookingService implements ITimeBookingService{
+public class TimeBookingService implements IServiceEntity <TimeBooking>{
 	
 	@Autowired
 	ITimeBookingRepository iRepository;
@@ -40,6 +40,12 @@ public class TimeBookingService implements ITimeBookingService{
 	@Override
 	public void update(TimeBooking timeBooking) {
 		iRepository.save(timeBooking);
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,11 +1,7 @@
 package com.example.demo.controller.api;
 
 
-
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,34 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.data.CustomerJsonData;
-import com.example.demo.data.TimeSlotJsonData;
-import com.example.demo.data.UmbrellaJsonData;
 import com.example.demo.model.Customer;
-import com.example.demo.model.TimeSlot;
-import com.example.demo.model.Umbrella;
-import com.example.demo.service.ICustomerService;
-import com.example.demo.service.ITimeSlotService;
-import com.example.demo.service.IUmbrellaService;
+import com.example.demo.service.IServiceEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
 @RequestMapping("api/customer")
 public class DBCustomerController {
 
 	@Autowired
-	@Qualifier("CustomerService")
-	private ICustomerService service;
+	//@Qualifier("CustomerService")
+	private IServiceEntity<Customer> service;
 
 	@GetMapping("get/all")
 	@CrossOrigin

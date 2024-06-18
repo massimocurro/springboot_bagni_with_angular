@@ -16,7 +16,7 @@ import com.example.demo.repository.IUmbrellaRepository;
 
 
 @Service("CustomerService")
-public class CustomerService implements ICustomerService{
+public class CustomerService implements IServiceEntity <Customer>{
 	
 	@Autowired
 	ICustomerRepository iRepository;
@@ -50,6 +50,14 @@ public class CustomerService implements ICustomerService{
 		// TODO Auto-generated method stub
 		return iRepository.findById(id).map(Collections::singleton)
 	            .orElseGet(Collections::emptySet);
+	}
+
+
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

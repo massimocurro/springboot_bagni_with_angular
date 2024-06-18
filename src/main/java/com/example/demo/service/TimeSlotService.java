@@ -16,7 +16,7 @@ import com.example.demo.repository.IUmbrellaRepository;
 
 
 @Service("TimeSlotService")
-public class TimeSlotService implements ITimeSlotService{
+public class TimeSlotService implements IServiceEntity <TimeSlot>{
 	
 	@Autowired
 	ITimeSlotRepository iRepository;

@@ -49,11 +49,26 @@ public class BeanInjectionTest {
 		
 		
 		
-		ComponentClass2 customer = ctx.getBean(ComponentClass2.class);
+		Customer customer = ctx.getBean(Customer.class);
 		customer.setName("Massimo");
+		
+		CustomerIdentify customerIdentity = customer.componentClass();
+		customerIdentity.setIdentity("CAZZO");
 		System.out.println(customer.getName());
-		ComponentClass2 customer2 = ctx.getBean(ComponentClass2.class);
+		
+		
+		Customer customer2 = ctx.getBean(Customer.class);
 		System.out.println(customer2.getName());
+		System.out.println("get string from componentClass: " + customer2.componentClass().getIdentity());
+		
+		
+		CustomerIdentify test2 = ctx.getBean(CustomerIdentify.class);
+		System.out.println("get string from componentClass directly from ctx: " + test2.getIdentity());
+
+		
+		for (String component2 : ctx.getBeanDefinitionNames()) {
+			System.out.println("> bean component present in IOC contanier: " + component2);
+		}
 		
 
 	}

@@ -8,8 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import com.example.bean.test.ComponentClass;
-import com.example.bean.test.ComponentClass2;
+import com.example.bean.test.CustomerIdentify;
+import com.example.bean.test.Customer;
 import com.example.demo.service.CustomerService;
 
 import org.springframework.context.ApplicationContext;

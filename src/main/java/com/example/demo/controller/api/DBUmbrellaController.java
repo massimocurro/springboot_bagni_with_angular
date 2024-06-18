@@ -19,24 +19,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.data.UmbrellaJsonData;
-
 import com.example.demo.model.Umbrella;
-
-import com.example.demo.service.IUmbrellaService;
+import com.example.demo.service.IServiceEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
 @RequestMapping("api/umbrella")
 public class DBUmbrellaController {
 
 	@Autowired
-	@Qualifier("UmbrellaService")
-	private IUmbrellaService umbrellaService;
+	//@Qualifier("UmbrellaService")
+	private IServiceEntity<Umbrella> umbrellaService;
 
 	@GetMapping("get/all")
 	@CrossOrigin

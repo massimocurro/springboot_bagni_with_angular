@@ -14,7 +14,7 @@ import com.example.demo.repository.IUmbrellaRepository;
 
 
 @Service("UmbrellaBookingService")
-public class UmbrellaBookingService implements IUmbrellaBookingService{
+public class UmbrellaBookingService implements IServiceEntity <UmbrellaBooking>{
 	
 	@Autowired
 	IUmbrellaBookingRepository iRepository;
@@ -43,6 +43,12 @@ public class UmbrellaBookingService implements IUmbrellaBookingService{
 		// TODO Auto-generated method stub
 		return iRepository.findById(id).map(Collections::singleton)
 	            .orElseGet(Collections::emptySet);
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

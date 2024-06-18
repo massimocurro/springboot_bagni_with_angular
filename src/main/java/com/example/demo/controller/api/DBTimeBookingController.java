@@ -2,7 +2,6 @@ package com.example.demo.controller.api;
 
 
 
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,9 +22,7 @@ import com.example.demo.data.UmbrellaJsonData;
 import com.example.demo.model.TimeBooking;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
-import com.example.demo.service.ITimeBookingService;
-import com.example.demo.service.IUmbrellaBookingService;
-import com.example.demo.service.IUmbrellaService;
+import com.example.demo.service.IServiceEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationConfig;
@@ -38,8 +35,8 @@ import com.fasterxml.jackson.databind.ObjectReader;
 public class DBTimeBookingController {
 
 	@Autowired
-	@Qualifier("TimeBookingService")
-	private ITimeBookingService service;
+	//@Qualifier("TimeBookingService")
+	private IServiceEntity<TimeBooking> service;
 
 	@GetMapping("get/all")
 	@CrossOrigin

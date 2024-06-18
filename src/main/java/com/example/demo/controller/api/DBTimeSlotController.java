@@ -22,8 +22,8 @@ import com.example.demo.data.TimeSlotJsonData;
 import com.example.demo.data.UmbrellaJsonData;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
+import com.example.demo.service.IServiceEntity;
 import com.example.demo.service.ITimeSlotService;
-import com.example.demo.service.IUmbrellaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationConfig;
@@ -36,8 +36,8 @@ import com.fasterxml.jackson.databind.ObjectReader;
 public class DBTimeSlotController {
 
 	@Autowired
-	@Qualifier("TimeSlotService")
-	private ITimeSlotService service;
+	//@Qualifier("TimeSlotService")
+	private IServiceEntity<TimeSlot> service;
 
 	@GetMapping("get/all")
 	@CrossOrigin

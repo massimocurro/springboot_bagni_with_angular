@@ -20,7 +20,7 @@ import jakarta.persistence.Query;
 
 
 @Service("UmbrellaService")
-public class UmbrellaService implements IUmbrellaService{
+public class UmbrellaService implements IServiceEntity <Umbrella>{
 	
 	@Autowired
 	IUmbrellaRepository iRepository;
@@ -56,7 +56,6 @@ public class UmbrellaService implements IUmbrellaService{
 		iRepository.save(umbrella);
 	}
 
-	@Override
 	public Umbrella getByUmbrellaAndPeriod(int id, String period) {
 		// TODO Auto-generated method stub
 		
@@ -73,6 +72,12 @@ public class UmbrellaService implements IUmbrellaService{
 		jpqlQuery.setParameter("id", id);
 	    return (Umbrella) jpqlQuery.getSingleResult();
 				
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
