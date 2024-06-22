@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class Customer {
 	
 	@Bean
 	@Scope("singleton")
+	@Lazy
 	//@Scope("prototype")
 	public CustomerIdentify componentClass() {
 		CustomerIdentify componentClass = new CustomerIdentify();

@@ -2,8 +2,12 @@ package com.example.bean.test;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+
 public class CustomerIdentify {
+	
+	public CustomerIdentify() {
+		System.out.println("allocato CustomerIdentity!!!!!!!!!!!!!!!!!!!!");	
+		}
 	
 	public String getIdentity() {
 		return identity;
