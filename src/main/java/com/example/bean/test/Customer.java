@@ -33,7 +33,7 @@ public class Customer {
 	
 	@Bean
 	@Scope("singleton")
-	@Lazy
+	//@Lazy
 	//@Scope("prototype")
 	public CustomerIdentify componentClass() {
 		CustomerIdentify componentClass = new CustomerIdentify();
