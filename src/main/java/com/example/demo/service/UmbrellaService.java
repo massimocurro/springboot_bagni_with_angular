@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Umbrella;
+import com.example.demo.model.User;
 import com.example.demo.repository.IUmbrellaRepository;
 
 import jakarta.persistence.EntityManager;
@@ -78,6 +79,12 @@ public class UmbrellaService implements IServiceEntity <Umbrella>{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
-
+import java.util.function.Predicate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +14,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
+
+
+@FunctionalInterface
+interface MyPredicate {
+    boolean test(Integer value);
+}
 
 @Configuration //la classe stessa diventa la classe di configurazione dei bean
 @ComponentScan //permette di cercare tutti i bean definiti
@@ -70,6 +76,13 @@ public class BeanInjectionTest {
 			System.out.println("> bean component present in IOC contanier: " + component2);
 		}
 		
+		
+		MyPredicate myPredicate = x -> (x + 2) > 5;
+        System.out.println(myPredicate.test(2));
+        
+        Predicate <Integer> test = (i) -> (i > 0);
+        
+        System.out.println("Predicate test: " +test.test(4));
 
 	}
 //	@SuppressWarnings("deprecation")

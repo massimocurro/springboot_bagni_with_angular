@@ -97,4 +97,9 @@ public class DBUmbrellaController {
 		System.out.println("in delete: /api/delete");
 	
 	}
+	
+	@GetMapping("/test")
+	public String Test() {
+		return "CHE CAZZO";
+	}
 }

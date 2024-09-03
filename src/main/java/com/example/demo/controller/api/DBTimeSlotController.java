@@ -23,7 +23,6 @@ import com.example.demo.data.UmbrellaJsonData;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
 import com.example.demo.service.IServiceEntity;
-import com.example.demo.service.ITimeSlotService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationConfig;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Customer;
 import com.example.demo.model.Umbrella;
+import com.example.demo.model.User;
 import com.example.demo.repository.ICustomerRepository;
 import com.example.demo.repository.IUmbrellaRepository;
 
@@ -58,6 +59,14 @@ public class CustomerService implements IServiceEntity <Customer>{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	@Override
+	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

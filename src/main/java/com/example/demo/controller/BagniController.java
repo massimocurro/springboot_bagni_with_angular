@@ -15,4 +15,6 @@ public class BagniController {
 		return "admin";
 	}
 	
+
+	
 }

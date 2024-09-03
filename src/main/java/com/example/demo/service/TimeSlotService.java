@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
+import com.example.demo.model.User;
 import com.example.demo.repository.ITimeSlotRepository;
 import com.example.demo.repository.IUmbrellaBookingRepository;
 import com.example.demo.repository.IUmbrellaRepository;
@@ -50,6 +51,12 @@ public class TimeSlotService implements IServiceEntity <TimeSlot>{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		this.iRepository.deleteById(id);
+	}
+
+	@Override
+	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
