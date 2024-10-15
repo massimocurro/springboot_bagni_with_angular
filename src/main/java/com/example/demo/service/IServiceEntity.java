@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.Date;
+
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.User;
 
 public interface IServiceEntity <T>{
@@ -16,5 +19,6 @@ public interface IServiceEntity <T>{
 	
 	Iterable<User> getByUserNameAndPassord(String username, String password);
 	
+	Iterable<TimeBooking> getByDateAndUmbrellaId(String date, int umbrella_id);
 	
 }

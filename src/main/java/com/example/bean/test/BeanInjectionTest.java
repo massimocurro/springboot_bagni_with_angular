@@ -62,7 +62,6 @@ public class BeanInjectionTest {
 		customerIdentity.setIdentity("CAZZO");
 		System.out.println(customer.getName());
 		
-		
 		Customer customer2 = ctx.getBean(Customer.class);
 		System.out.println(customer2.getName());
 		System.out.println("get string from componentClass: " + customer2.componentClass().getIdentity());

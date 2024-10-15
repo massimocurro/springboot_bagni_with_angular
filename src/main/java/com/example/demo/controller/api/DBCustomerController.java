@@ -46,15 +46,19 @@ public class DBCustomerController {
 	@CrossOrigin
 	@ResponseBody
 	public void add(@RequestBody String customerJson) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/add");
+		System.out.println("in add: /api/customer/add");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		CustomerJsonData customer_data = objectMapper.readValue(customerJson, CustomerJsonData.class);
 	     
-//		Customer customer = new Customer();
-//		customer.getSurname(customer_data.getTimeSlot());
-//		
-//		service.add(customer);
+		Customer customer = new Customer();
+		customer.setSurname(customer_data.getSurName());
+		customer.setName(customer_data.getName());
+		customer.setAddress(customer_data.getAddress());
+		customer.setEmail(customer_data.getEmail());
+		customer.setPhone(customer_data.getPhone());
+		
+		service.add(customer);
 
 	}
 	

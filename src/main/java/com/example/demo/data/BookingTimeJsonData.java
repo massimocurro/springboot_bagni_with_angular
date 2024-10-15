@@ -14,6 +14,9 @@ public class BookingTimeJsonData {
 	@JsonProperty("id")
 	private int id;
 	
+	@JsonProperty("umbrella_id")
+	private int umbrella_id;
+	
 	
 	public void setId(int id) {
 		this.id = id;
@@ -31,10 +34,13 @@ public class BookingTimeJsonData {
 		this.date = date;
 	}
 	
+	public int getUmbrellaId() {
+		return this.umbrella_id;
+	}
 	
-
-	
-	
+	public void setUmbrellaId(int id) {
+		this.umbrella_id = id;
+	}
 }
 	
 	

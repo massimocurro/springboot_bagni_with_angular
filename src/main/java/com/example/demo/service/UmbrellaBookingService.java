@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
 import com.example.demo.model.User;
@@ -54,6 +56,12 @@ public class UmbrellaBookingService implements IServiceEntity <UmbrellaBooking>{
 
 	@Override
 	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterable<TimeBooking> getByDateAndUmbrellaId(String date, int umbrella_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

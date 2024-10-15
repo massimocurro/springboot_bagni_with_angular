@@ -1,12 +1,14 @@
 package com.example.demo.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.User;
 import com.example.demo.repository.ICustomerRepository;
@@ -41,7 +43,7 @@ public class CustomerService implements IServiceEntity <Customer>{
 	@Override
 	public Iterable<Customer> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.iRepository.findAll();
 	}
 
 
@@ -65,6 +67,14 @@ public class CustomerService implements IServiceEntity <Customer>{
 
 	@Override
 	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public Iterable<TimeBooking> getByDateAndUmbrellaId(String date, int umbrella_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

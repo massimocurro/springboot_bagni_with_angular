@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.data.TimeSlotJsonData;
 import com.example.demo.data.UmbrellaJsonData;
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
 import com.example.demo.service.IServiceEntity;
@@ -37,6 +38,14 @@ public class DBTimeSlotController {
 	@Autowired
 	//@Qualifier("TimeSlotService")
 	private IServiceEntity<TimeSlot> service;
+	
+	@Autowired
+	//@Qualifier("TimeSlotService")
+	private IServiceEntity<TimeBooking> serviceTB;
+	
+	@Autowired
+	//@Qualifier("TimeSlotService")
+	private IServiceEntity<Umbrella> serviceUmbrella;
 
 	@GetMapping("get/all")
 	@CrossOrigin
@@ -57,16 +66,18 @@ public class DBTimeSlotController {
 	@CrossOrigin
 	@ResponseBody
 	public void add(@RequestBody String timeSlot) throws JsonMappingException, JsonProcessingException {
-		System.out.println("in add: /api/umbrella/add");
+		System.out.println("in add: /api/time_slot/add");
 		ObjectMapper objectMapper = new ObjectMapper();
 		
-		TimeSlotJsonData time_Slot = objectMapper.readValue(timeSlot, TimeSlotJsonData.class);
+		TimeSlotJsonData time_slot_json = objectMapper.readValue(timeSlot, TimeSlotJsonData.class);
 	     
 		TimeSlot newTimeSlot = new TimeSlot();
-		newTimeSlot.setTime_slot(time_Slot.getTimeSlot());
 		
-		service.add(newTimeSlot);
-
+		Iterable <TimeBooking> timeBooking = this.serviceTB.getById(time_slot_json.getTimeBookingId());
+		System.out.println("tb id: "+time_slot_json.getTimeBookingId());
+		
+		
+		timeBooking.forEach((element) -> {newTimeSlot.setTimeBookingRef(element);  newTimeSlot.setTime_slot(time_slot_json.getTimeSlot());service.add(newTimeSlot); });
 	}
 	
 	@PostMapping("update")

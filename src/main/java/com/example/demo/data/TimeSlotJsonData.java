@@ -11,6 +11,10 @@ public class TimeSlotJsonData {
 	@JsonProperty("time_slot")
 	private String time_slot;
 	
+	@JsonProperty("time_booking_id")
+	private int time_booking_id;
+	
+	
 	public TimeSlotJsonData() {}
 		
 	
@@ -28,6 +32,14 @@ public class TimeSlotJsonData {
 	
 	public void setTimeSlot(String timeSlot) {
 		this.time_slot = timeSlot;
+	}
+	
+	public int getTimeBookingId() {
+		return this.time_booking_id;
+	}
+	
+	public void setTimeBookingId(int id) {
+		this.time_booking_id = id;
 	}
 	
 	

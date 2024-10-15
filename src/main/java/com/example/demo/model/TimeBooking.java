@@ -29,6 +29,8 @@ public class TimeBooking {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "time_booking_ref", cascade = CascadeType.ALL)
 	private Set <TimeSlot> time_slot_ref;
 	    
+	
+	
 	public Set <TimeSlot> getTimeSlotRef() {
 	    	return time_slot_ref;
 	}
@@ -44,5 +46,10 @@ public class TimeBooking {
 	public int getId() {
 		return id;
 	}
+	
+	public void setUmbrellaRef(Umbrella umbrella) {
+		this.umbrella_ref = umbrella;
+	}
+	
 
 }

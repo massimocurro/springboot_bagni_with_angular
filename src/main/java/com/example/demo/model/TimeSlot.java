@@ -48,10 +48,10 @@ public class TimeSlot {
 		return customer_ref;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "time_slot_ref")
-	private Set <Umbrella> umbrella_ref;
-	    
-	private int id_umbrella;
+	
+	public void setTimeBookingRef(TimeBooking element) {
+		this.time_booking_ref = element;
+	}
 
 	
 	public int getId() {
@@ -59,31 +59,11 @@ public class TimeSlot {
 	}
 
 
-
-	public int getId_umbrella() {
-		return id_umbrella;
-	}
-
-
-
-	public void setId_umbrella(int id_umbrella) {
-		this.id_umbrella = id_umbrella;
-	}
-
-
-
 	public String getTime_slot() {
 		return time_slot;
 	}
 
-
-
 	public void setTime_slot(String time_slot) {
 		this.time_slot = time_slot;
 	}
-
-
-
-
-
 }

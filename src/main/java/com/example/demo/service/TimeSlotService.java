@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
@@ -25,7 +27,8 @@ public class TimeSlotService implements IServiceEntity <TimeSlot>{
 	@Override
 	public void add(TimeSlot timeSlot) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("aggiungo timeSlot: " +timeSlot.getTime_slot());
+		this.iRepository.save(timeSlot);
 	}
 
 	@Override
@@ -55,6 +58,12 @@ public class TimeSlotService implements IServiceEntity <TimeSlot>{
 
 	@Override
 	public Iterable<User> getByUserNameAndPassord(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterable<TimeBooking> getByDateAndUmbrellaId(String date, int umbrella_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

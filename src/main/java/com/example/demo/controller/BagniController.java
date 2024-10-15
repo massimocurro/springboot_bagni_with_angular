@@ -9,12 +9,10 @@ public class BagniController {
 	public String Index() {
 		return "index";
 	}
-	
+
 	@RequestMapping("/admin")
 	public String Admin() {
 		return "admin";
 	}
-	
 
-	
 }

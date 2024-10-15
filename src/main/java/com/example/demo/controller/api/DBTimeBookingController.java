@@ -3,8 +3,10 @@ package com.example.demo.controller.api;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,23 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.data.BookingTimeJsonData;
-import com.example.demo.data.UmbrellaJsonData;
 import com.example.demo.model.TimeBooking;
 import com.example.demo.model.Umbrella;
-import com.example.demo.model.UmbrellaBooking;
 import com.example.demo.service.IServiceEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 
 @RestController
 @RequestMapping("api/booking")
@@ -37,6 +32,9 @@ public class DBTimeBookingController {
 	@Autowired
 	//@Qualifier("TimeBookingService")
 	private IServiceEntity<TimeBooking> service;
+	
+	@Autowired
+	private IServiceEntity<Umbrella> serviceUmbrella;
 
 	@GetMapping("get/all")
 	@CrossOrigin
@@ -52,6 +50,18 @@ public class DBTimeBookingController {
 		return service.getById(id);
 	}
 	
+	@GetMapping("get/{date}/{umbrella_id}")
+	@CrossOrigin
+	public Iterable <TimeBooking> getByDateAndUmbrellaId(@PathVariable Date date, @PathVariable int umbrella_id ) {
+		System.out.println("in get: /api/booking/get/" + date + "/" + umbrella_id);
+		String pattern = "yyyy/MM/dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		String dateNewFormat = simpleDateFormat.format(date);
+		System.out.println("NEW FORMAT DATE: "+dateNewFormat);
+		return service.getByDateAndUmbrellaId(dateNewFormat, umbrella_id);
+	}
+	
+	
 
 	@PostMapping("add")
 	@CrossOrigin
@@ -59,14 +69,20 @@ public class DBTimeBookingController {
 	public void add(@RequestBody String timeBooking) throws JsonMappingException, JsonProcessingException {
 		System.out.println("in add: /api/booking/add");
 		ObjectMapper objectMapper = new ObjectMapper();
-//		
-//		BookingTimeJsonData timeBooking = objectMapper.readValue(timeBooking, BookingTimeJsonData.class);
-//	     
-//		TimeBooking newBooking = new TimeBooking();
-//		newBooking.setDate(timeBooking.getDate());
-//		
-//		service.add(newBooking);
-
+		System.out.println("poco dopo: "+timeBooking);
+		BookingTimeJsonData timeBookingJson = objectMapper.readValue(timeBooking, BookingTimeJsonData.class);     
+		TimeBooking newBooking = new TimeBooking();
+		System.out.println("umbrella id: "+timeBookingJson.getUmbrellaId());
+		Iterable <Umbrella> umbrellas = this.serviceUmbrella.getById(timeBookingJson.getUmbrellaId());
+		
+		
+		System.out.println("timeBooking date:" + timeBookingJson.getDate());
+		newBooking.setDate(timeBookingJson.getDate());
+		 for (Umbrella each : umbrellas)
+			newBooking.setUmbrellaRef(each);
+		
+		System.out.println("timeBooking date:" + newBooking.getDate());
+		service.add(newBooking);
 	}
 	
 	@PostMapping("update")

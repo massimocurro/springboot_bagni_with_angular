@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.TimeBooking;
 import com.example.demo.model.TimeSlot;
 import com.example.demo.model.Umbrella;
 import com.example.demo.model.UmbrellaBooking;
@@ -61,6 +63,13 @@ public class UserService implements IServiceEntity <User>{
 
 	public Iterable<User> getByUserNameAndPassord(String username, String password) {
 		return this.iRepository.getByUserNameAndPassword(username, password);
+	}
+
+
+	@Override
+	public Iterable<TimeBooking> getByDateAndUmbrellaId(String date, int umbrella_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
